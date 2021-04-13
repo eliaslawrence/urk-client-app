@@ -1,0 +1,41 @@
+ion-card {
+    position: relative;
+    text-align: center;
+    margin: 0px !important;
+    height: 200px;
+    width: 100% !important;
+    border-radius: 0;
+
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(50%);
+    }
+}
+
+.card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+}
+
+.card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+}
+
+.badges-item{
+    ion-label{
+      white-space: normal;
+    }
+}
+.list-md{
+    padding-top: 0
+}

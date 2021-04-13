@@ -1,0 +1,57 @@
+<!--
+  Author: Elias Lawrence
+  Date: 02/04/2021
+
+  Generated template for the EditPhotosPage.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fotos</ion-title>  
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>  
+    <ion-buttons slot="end"  *ngIf="product.images && imgSelectedIndex != -1">      
+      <ion-button (click)="deleteImage(imgSelectedIndex)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card (click)="presentActionSheet()" *ngIf="product.images && imgSelectedIndex != -1">
+    <!-- <img src="{{product.images[imgSelectedIndex].src}}"/> -->
+    <img [src]="product.images[imgSelectedIndex].url" onerror="this.src='assets/imgs/np-image.png'"/>
+  </ion-card>
+
+  <ion-grid *ngIf="!product.images || imgSelectedIndex == -1">
+    <ion-row>
+      <ion-col>
+        <div></div>
+      </ion-col>
+      <ion-col col-8 class="image-col">
+        <div (click)="addPhoto()">
+          <img src="assets/imgs/new-img-5.png"/>
+        </div>
+        <!-- <div *ngIf="product.images && imgSelectedIndex != -1">
+          <img src="{{product.images[imgSelectedIndex].src}}"/>
+        </div> -->
+      </ion-col>
+      <ion-col>
+        <div></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="photoslide" *ngIf="product.images && product.images.length > 0">
+    <div *ngFor="let image of product.images; let i = index">  
+      <img [src]="image.url" (click)="imageSelected(i)" [ngClass]="{'img-selected': image.selected}"/>    
+      <!-- <img src="{{image.src}}" (click)="imageSelected(i)" [ngClass]="{'img-selected': image.selected}"> -->
+      <ion-buttons slot="end" class="toolbar-end-margin" style="position: absolute; top: 0; right: 0; margin: 0;" *ngIf="image.selected">
+      </ion-buttons>
+    </div>
+  </div>
+</ion-content>

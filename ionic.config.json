@@ -1,0 +1,8 @@
+{
+  "name": "urk-store",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

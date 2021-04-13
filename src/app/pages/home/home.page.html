@@ -1,0 +1,69 @@
+<!--
+  Author: Elias Lawrence
+  Date: 01/04/2021
+
+  Generated template for the HomePage.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid class="margin-top-30">
+    <ion-row>
+      <ion-col>
+        <div></div>
+      </ion-col>
+      <ion-col col-4 class="image-col">
+        <div>
+          <img class="login-logo" src="assets/imgs/logo.png"/>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="userForm">
+    <ion-list class="login-credentials margin-top-4rem">
+
+      <ion-item>
+        <ion-input type="email" placeholder="Login" color="white" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" placeholder="Password" color="white" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div style="text-align: center">      
+      <ion-button block type="submit" class="block-button bottom-5px margin-top-4rem" (click)="login()">ENTRAR</ion-button>
+    </div>
+
+    <div class="signup-button">
+      <ion-button fill="clear" (click)="signup()">
+        Cadastre-se
+      </ion-button>
+    </div>
+
+  </form>
+
+  <!-- <div class="signup-button" slot="fixed">
+    <ion-button fill="clear" (click)="signup()">
+      Cadastre-se
+    </ion-button>
+  </div>  -->
+</ion-content>
+
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar>
+      <ion-button fill="clear" (click)="signup()">
+        Cadastre-se
+      </ion-button>   
+  </ion-toolbar>
+</ion-footer> -->

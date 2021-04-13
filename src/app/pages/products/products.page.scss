@@ -1,0 +1,11 @@
+.same-line {
+    h2{
+      color: var(--ion-color-danger);
+    }
+    * {
+      display: inline;
+    }
+    p{
+        color: var(--ion-color-medium-shade);
+    }
+}

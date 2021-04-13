@@ -1,0 +1,60 @@
+<!--
+  Author: Elias Lawrence
+  Date: 05/04/2021
+
+  Generated template for the StorePage.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-toolbar> 
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>   
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <form [formGroup]="signupForm">
+    <ion-list class="list-form margin-top-0px">
+
+      <!-- <ion-item-divider color="light" no-lines>
+        <ion-label>
+          Dados pessoais
+        </ion-label>
+      </ion-item-divider> -->
+            
+      <ion-item>
+        <ion-label position="stacked">Nome<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required [(ngModel)]="employee.name" type="text" id="name" formControlName="name" maxlength="50"></ion-input>
+      </ion-item>            
+
+      <!-- <ion-item-divider color="light" no-lines>
+        Contato
+      </ion-item-divider> -->
+
+      <ion-item>
+        <ion-label position="stacked">Email<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required [(ngModel)]="user.email" type="email" id="email" formControlName="email"></ion-input>
+      </ion-item>  
+
+      <ion-item>
+        <ion-label position="stacked">Senha<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required [(ngModel)]="user.password" type="password" id="password" formControlName="password"></ion-input>
+      </ion-item> 
+
+      <ion-item>
+        <ion-label position="stacked">Confirmar Senha<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="password" id="password2" formControlName="password2"></ion-input>
+      </ion-item>         
+
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="full" size="large" (click)="save()" style="margin: 0;font-size: medium;" color="light">Cadastrar</ion-button>  
+</ion-footer>

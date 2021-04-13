@@ -1,0 +1,352 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+/*
+  --------------------- Button ---------------------
+*/
+ 
+  .block-button{
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
+  
+  .full-button{
+    margin: 0;
+    width: 100%;
+  }
+
+/*
+  --------------------- Spacing ---------------------
+*/
+  
+  .bottom-5px{
+    bottom: 5px;
+  }
+  
+  .padding-left-0{
+    padding-left: 0;
+  }
+
+/*
+  --------------------- Segment TAB ---------------------
+*/
+    
+/*
+  -------------- Input Focus and Validation --------------
+*/
+
+/*
+  -------------- Margin --------------
+*/
+
+.margin-top-30{
+  margin-top: 30%;
+}
+
+/*
+  -------------- Border --------------
+*/
+
+.border-none{
+  border: none;
+}
+
+/*
+  -------------- Text --------------
+*/
+
+.line-break{
+  white-space: normal;
+}
+
+.text-align-center {
+  text-align: center;
+} 
+
+.text-align-justify {
+  text-align: justify;
+} 
+
+/*
+  -------------- Popover --------------
+*/
+
+.custom-popover .popover-content {
+  width: 100%; 
+  top: auto !important;   
+  left: 0px !important;
+  bottom: 0px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.border-none {
+  border: none;
+} 
+
+.text-align-center{
+  text-align: center;
+}
+
+
+// http://ionicframework.com/docs/theming/
+
+
+.border-bottom-list{
+  margin-bottom: 1px;
+}
+
+.margin-bottom-0px{
+  margin-bottom: 0px;
+}
+
+.item-ios.margin-top-1px{
+  margin-top: 1px;
+}
+
+.crop-image-container{
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-crop-image-container{
+  max-height: 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+.list-md.border-bottom-list> .item:last-child{
+  border-bottom: 0.55px solid #c8c7cc;
+}
+
+.border-top-footer{
+  margin-top: 1px;
+  border-top: 0.55px solid #c8c7cc;
+}
+
+img.nav-avatar{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+}
+
+.item-full-border-bottom {
+  .item{
+    border-bottom: 1px solid #dedede;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(222, 222, 222);
+    /*padding-left: 0px;*/
+
+    .item-inner{
+      border-bottom-width: 0px;
+      /*padding-left: 16px;*/
+    }
+  }
+}
+
+.store-button{
+  padding: 0;
+  display: block;
+}
+
+.toolbar{
+  padding: 0px;
+
+  img{
+    width: 100%;
+    /*min-height: 200px;*/
+    display:block;
+    filter: brightness(50%);
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0rem;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.tab-button[aria-selected=true] {
+  margin-top: 1px;
+  border-width: 0px 0px 2px 0px !important;
+  border-style: solid;
+}
+
+.toolbar-end-margin{
+  margin-right: 10px;
+}
+
+.toolbar-start-margin{
+  margin-left: 10px;
+}
+
+.block-button{
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+.full-button{
+  margin: 0;
+  width: 100%;
+}
+
+.bottom-5px{
+  bottom: 5px;
+}
+
+.button-md{
+  height: 4.4rem;
+}
+
+/*
+--------------------- Segment TAB ---------------------
+*/
+.segment-tab > .segment-button {
+  background-color: var(--ion-color-primary) !important;
+  opacity: 1 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.segment-tab > .segment-button.segment-activated {
+  border-color: white !important;
+  color: white !important;
+  .text-inside-button {
+    transform: scale3d(1.1, 1.1, 1);
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+    transition-property: transform, -webkit-transform;
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: initial;
+  }
+}
+
+.segment-ios.segment-tab > .segment-button {
+  border-radius: 0px !important;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  border-width: 2px;
+}
+.segment-tab > .segment-button.segment-activated {
+  border-color: white !important;
+  color: white !important;
+}
+.segment-ios.segment-tab > .segment-button.segment-activated {
+  .text-inside-button {
+    transform: scale3d(1.012, 1.012, 1);
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+    transition-property: transform, -webkit-transform;
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: initial;
+  }
+}
+.segment-md.segment-tab > .segment-button.segment-activated {
+  .text-inside-button {
+    transform: scale3d(1.012, 1.012, 1);
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+    transition-property: transform, -webkit-transform;
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: initial;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+
+.icon-only-button{
+  box-shadow: none;
+}
+
+.primary-bg{
+  background-color: var(--ion-color-primary);
+}
+
+.primary-color{
+  color: var(--ion-color-primary);
+}
+
+.danger-color{
+  color: var(--ion-color-danger);
+}
+
+//Centralizar elementos dentro de uma coluna da grid
+.image-col{
+  text-align: center;
+}
+
+.text-col{
+  display: block;
+  max-width: 24%;
+  margin: auto;
+  text-align: center;
+}
+
+/*
+-------------- Input Focus and Validation --------------
+*/
+
+.focus-item .item-inner{
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.focus-item ion-input, .focus-item ion-textarea{
+  box-shadow: inset 0 -1px 0 0 #dedede;
+}
+
+.focus-item.item-input-has-focus{
+  ion-label[stacked]{
+    color: var(--ion-color-primary);
+  }
+
+  ion-input, ion-textarea{
+    box-shadow: inset 0 -1px 0 0 var(--ion-color-primary);
+  }
+}
+
+.validation-item:not(.item-input-has-focus){
+  .ng-dirty.ng-invalid, .invalid-input{
+    box-shadow: inset 0 -1px 0 0 #f53d3d;
+  }
+}
+
+//Product
+.no-border{
+  border-width: 0 !important;
+}

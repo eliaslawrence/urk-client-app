@@ -1,0 +1,24 @@
+// Screen Orientation
+ionic cordova plugin add cordova-plugin-screen-orientation
+npm install @ionic-native/screen-orientation
+
+// Dependency for screen orientation
+npm install @ionic-native/core --save 
+
+// Camera
+ionic cordova plugin add cordova-plugin-camera
+npm install --save @ionic-native/camera
+
+// File
+ionic cordova plugin add cordova-plugin-file
+npm install --save @ionic-native/file
+
+// File Transfer
+ionic cordova plugin add cordova-plugin-file-transfer
+npm install @ionic-native/file-transfer
+
+//Storage
+npm install --save @ionic/storage-angular
+
+//Splash Screen
+npm install @ionic-native/splash-screen

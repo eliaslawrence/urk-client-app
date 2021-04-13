@@ -1,0 +1,79 @@
+<!--
+  Author: Elias Lawrence
+  Date: 02/04/2021
+
+  Generated template for the EditAddresspage.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="saveItem()">
+        Salvar
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="storeForm">
+    <ion-list>    
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">CEP</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="cep" name="cep" (focus)="cepFocus=true" (blur)="cepFocus=false"
+                  [class.invalid-input]="!storeForm.controls.cep.valid && submitAttempt"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">Endereço</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="address" name="address" (focus)="addressFocus=true" (blur)="addressFocus=false"
+                  [class.invalid-input]="!storeForm.controls.address.valid && submitAttempt"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">Número</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="number" name="number" (focus)="numberFocus=true" (blur)="numberFocus=false"
+                  [class.invalid-input]="!storeForm.controls.number.valid && submitAttempt"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">Complemento (Opcional)</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="complement" name="complement" (focus)="complementFocus=true" (blur)="complementFocus=false"
+                  [class.invalid-input]="!storeForm.controls.complement.valid && submitAttempt"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">Bairro</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="neighborhood" name="neighborhood" (focus)="neighborhoodFocus=true" (blur)="neighborhoodFocus=false"
+                  [class.invalid-input]="!storeForm.controls.neighborhood.valid && submitAttempt"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">Cidade</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="city" name="city" (focus)="cityFocus=true" (blur)="cityFocus=false"
+                  [class.invalid-input]="!storeForm.controls.city.valid && submitAttempt"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">Estado</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="state" name="state" (focus)="stateFocus=true" (blur)="stateFocus=false"
+                  [class.invalid-input]="!storeForm.controls.state.valid && submitAttempt"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none" class="focus-item validation-item">
+        <ion-label position="stacked">País</ion-label>
+        <ion-input type="text" maxlength="60" formControlName="country" name="country" (focus)="countryFocus=true" (blur)="countryFocus=false"
+                  [class.invalid-input]="!storeForm.controls.country.valid && submitAttempt"></ion-input>
+      </ion-item>
+    </ion-list>       
+  </form>
+</ion-content>

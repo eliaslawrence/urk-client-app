@@ -1,0 +1,131 @@
+<!--
+  Author: Elias Lawrence
+  Date: 02/04/2021
+
+  Generated template for the ProductPage.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Produto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end"> 
+      <ion-button (click)="addPhoto()">
+        <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+      </ion-button>     
+      <ion-button (click)="delete()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="crop-image-container">   
+    <img [src]="product && product.coverImage ? product.coverImage.url : 'assets/imgs/no-image.png'" onerror="this.src='assets/imgs/no-image.png'"/>    
+  </ion-card>
+  <ion-item-divider color="light" class="border-none">
+    Fotos
+  </ion-item-divider>
+  <div class="photoslide" *ngIf="product && product.images && product.images.length > 0" (click)="editPhotos()">
+    <div *ngFor="let image of product.images; let i = index">
+      <!-- <img src="{{image.src}}"> -->
+      <img [src]="image.url" onerror="this.src='assets/imgs/sm.jpg'"/>
+    </div>
+  </div>
+
+  <ion-item lines="none" *ngIf="!product || !product.images || product.images.length == 0" (click)="editPhotos()">
+    <ion-label>
+      <p>Adicionar fotos</p>
+    </ion-label>    
+  </ion-item>
+
+  <ion-list>
+    <ion-item-divider color="light" class="border-none">
+      Dados do produto
+    </ion-item-divider>
+    <ion-item lines="full" (click)="editVariable('code', 'Código', product.code)">
+      <ion-label>
+        <p>Código</p>
+        <h2>{{product.code}}</h2>
+      </ion-label>      
+    </ion-item>
+    <ion-item lines="full" (click)="editVariable('name', 'Nome', product.name)">
+      <ion-label>
+        <p>Nome</p>
+        <h2>{{product.name}}</h2>
+      </ion-label>      
+    </ion-item>
+    <ion-item lines="full" (click)="editVariable('description', 'Descrição', product.description, 'edit-description')">
+      <ion-label>
+        <p>Descrição</p>
+        <div class="line-break">
+          <h3>{{product.description}}</h3>
+        </div>
+      </ion-label>      
+    </ion-item>
+    <!-- <ion-item lines="full" class="badges-item" (click)="showCategoriesModal()">
+      <ion-label>
+        <p>Categorias</p>
+        <ion-badge color="primary" style="margin: 2px;" *ngFor="let category of product.categories">{{category.name}}</ion-badge>
+      </ion-label>      
+    </ion-item> -->
+    <ion-item lines="full" (click)="editVariable('price', 'Preço de venda', product.price, 'edit-money')">
+      <ion-label>
+        <p>Preço de venda</p>
+        <h2>R$ {{product.price}}</h2>
+      </ion-label>      
+    </ion-item>
+    <ion-item lines="full" (click)="editVariable('cost', 'Custo', product.cost, 'edit-money')">
+      <ion-label>
+        <p>Custo</p>
+        <h2>R$ {{product.cost}}</h2>
+      </ion-label>      
+    </ion-item>
+    <!-- <ion-item lines="full" *ngIf="product.stockControl" (click)="editVariable('quantity', 'Quantidade', product.quantity)">
+      <ion-label>
+        <p>Quantidade</p>
+        <h2>{{product.quantity}}</h2>
+      </ion-label>      
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Controle de estoque</ion-label>
+      <ion-toggle [(ngModel)]="product.stockControl" color="primary" *ngIf="product.quantity > 0" ></ion-toggle>
+      <ion-toggle [(ngModel)]="product.stockControl" color="danger"  *ngIf="product.quantity == 0"></ion-toggle>
+    </ion-item> -->
+    <ion-item lines="none">
+      <ion-label>Visível para os clientes</ion-label>
+      <ion-toggle [(ngModel)]="product.available" color="primary" (ionChange)="availableToggled(product.available)"></ion-toggle>
+    </ion-item>    
+
+    <!-- <ion-item-divider color="light" class="border-none">
+      Pagamento
+    </ion-item-divider>
+    <ion-item lines="none" *ngIf="product.paymentOptions && product.paymentOptions.length > 0" class="badges-item" (click)="showPaymentOptionsModal(this)">
+      <ion-badge color="primary" style="margin: 2px;" *ngFor="let paymentOption of product.paymentOptions">{{paymentOption.name}}</ion-badge>
+    </ion-item>
+    <ion-item lines="none" *ngIf="!product.paymentOptions || product.paymentOptions.length == 0" (click)="showPaymentOptionsModal()">
+      <ion-label>
+        <p>Adicionar forma de pagamento</p>
+      </ion-label>      
+    </ion-item>
+
+    <ion-item-divider color="light" class="border-none">
+      Entrega
+    </ion-item-divider>
+    <ion-item lines="none" class="badges-item" *ngIf="product.deliveryOptions && product.deliveryOptions.length > 0" (click)="showDeliverOptionsModal(this)">
+      <ion-badge color="primary" style="margin: 2px;" *ngFor="let deliveryOption of product.deliveryOptions">{{deliverOption.name}}</ion-badge>
+    </ion-item>
+    <ion-item lines="none" *ngIf="!product.deliveryOptions || product.deliveryOptions.length == 0" (click)="showDeliverOptionsModal()">
+      <ion-label>
+        <p>Adicionar forma de entrega</p>
+      </ion-label>      
+    </ion-item> -->
+  </ion-list>
+</ion-content>

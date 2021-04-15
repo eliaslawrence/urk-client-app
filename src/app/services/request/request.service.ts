@@ -55,7 +55,7 @@ export class RequestService {
   }
 
   private async getRequest(url, params, loadingMessage = null): Promise<any>{    
-    try{
+    try{      
       await this.showLoading(loadingMessage);
       var result = await this.getHttp(url, params);
     } catch (err) {
@@ -100,11 +100,15 @@ export class RequestService {
   }
 
   private async showLoading(message){
-    this.loading = await this.loadingCtrl.create({message: message});
-    await this.loading.present();
+    if(message){
+      this.loading = await this.loadingCtrl.create({message: message});
+      await this.loading.present();
+    }    
   }
 
   private async dismissLoading(){
-    await this.loading.dismiss();
+    if(this.loading){
+      await this.loading.dismiss();
+    }    
   }
 }

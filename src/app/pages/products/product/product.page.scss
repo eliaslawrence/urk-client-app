@@ -1,27 +1,14 @@
-.photoslide{
-    white-space: nowrap; 
-    overflow-x: auto; 
-    height: 150px;    
-    div{
-        display: inline-block; 
-        padding-top: 10px; 
-        padding-bottom: 10px; 
-        padding-right: 5px; 
-        padding-left: 5px; 
+ion-slides {
+    height: 100%;  
+    ion-slide {
         height: 100%;
-
-        img{
-            height: 100%;
-            width: 150px;
-            object-fit: cover;
-        }
     }
 }
 
-ion-card {
-    img{
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
+img { 
+    filter: brightness(90%);
+}
+
+ion-list {
+    padding-top: 0;
 }

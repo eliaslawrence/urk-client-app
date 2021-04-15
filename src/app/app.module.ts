@@ -31,12 +31,12 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
   providers: [
     ScreenOrientation,
     SplashScreen,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    },
-    TokenInterceptorService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptorService,
+    //   multi: true
+    // },
+    // TokenInterceptorService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],

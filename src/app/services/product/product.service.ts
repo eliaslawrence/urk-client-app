@@ -21,6 +21,11 @@ export class ProductService {
     return await this.requestService.get(uri, {}, "Buscando...");
   }
 
+  async search(limit,skip,text=undefined) {
+    let uri = BASE_URI +'search/' + limit + '/' + skip  + '/' + (text == undefined ? '' : text);
+    return await this.requestService.get(uri, {}, null);
+  }
+
   // UPDATE
   async updateAttribute(productId, attributeJSON) : Promise<any>{
     let uri = BASE_URI + 'updateAttribute/' + productId;

@@ -10,119 +10,75 @@
 
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" *ngIf="!searchAble">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Produtos</ion-title>
+    <ion-title *ngIf="!searchAble">Urk</ion-title>
+    <ion-buttons slot="end" id="products-search" *ngIf="!searchAble">
+      <ion-button (click)="enableSearch()">
+        <ion-icon slot="icon-only" name="search-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-searchbar search-icon="undefined" mode="ios" inputmode="search" placeholder="Pesquisar" (ionInput)="search($event)" *ngIf="searchAble" class="searchbar"></ion-searchbar>
+    <ion-buttons slot="end" *ngIf="searchAble">
+      <ion-button (click)="cancel()">
+        Cancelar
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-  <ion-segment [(ngModel)]="status" color="primary" class="segment-tab">
-    <ion-segment-button value="available">
-      <div class="text-inside-button">
-        Disponível
-      </div>
-    </ion-segment-button>
-    <ion-segment-button value="unavailable">
-      <div class="text-inside-button">
-        Indisponível
-      </div>
-    </ion-segment-button>
-    <!-- <ion-segment-button value="soldOut">
-      <div class="text-inside-button">
-        Esgotado
-      </div>
-    </ion-segment-button> -->
-  </ion-segment>
 </ion-header>
 
-<ion-content>
-  <ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button color="light" (click)="newProduct($event)">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <div [ngSwitch]="status">
-    <ion-list *ngSwitchCase="'available'">
-      <div *ngFor="let item of products; let i = index">
-        <ion-item lines="full" *ngIf="item.available" (click)="itemTapped(item.id)">
-          <ion-thumbnail slot="start" *ngIf="item.coverImage">
-            <img [src]="item.coverImage.url" onerror="this.src='assets/imgs/no-image.png'"/>
-            <!-- <img [src]="url + item.images[0].image" onerror="this.src='assets/imgs/no-image.png'"/> -->
-            <!-- <img src="{{item.imagesList && item.imagesList[0] ? item.imagesList[0].src : 'assets/imgs/sm.jpg'}}">             -->
-          </ion-thumbnail>
-          <ion-thumbnail slot="start" *ngIf="!item.coverImage">
-            <img src="assets/imgs/no-image.png"/>
-          </ion-thumbnail>
-
-          <ion-label>
+<ion-content>  
+  <div style="text-align: center">
+    <ion-card *ngFor="let item of products; let i = index" (click)="itemTapped(item)">
+      <div class="pricetag-button" style="position: relative">
+        <img [src]="item.coverImage ? item.coverImage.url : 'assets/imgs/no-image.png'" onerror="this.src='assets/imgs/no-image.png'"/>
+        <!-- <ion-fab vertical="top" horizontal="start" *ngIf="item.sales">
+          <ion-fab-button color="light" (click)="newProduct($event)">
+            <ion-icon name="pricetag"></ion-icon>
+          </ion-fab-button>
+        </ion-fab> -->
+      </div>
+      <!-- <div class="product-tags">
+        <div>
+          <button ion-button icon-only *ngIf="item.type == 1" class="special-tag">
+            <ion-icon name="clock"></ion-icon>
+          </button>
+          <button ion-button icon-only *ngIf="item.type == 2" class="special-tag">
+            <ion-icon name="ios-archive"></ion-icon>
+          </button>
+          <button ion-button icon-only *ngIf="contains(item.paymentOptions, '1')" class="common-tag">
+            <ion-icon name="phone-portrait"></ion-icon>
+          </button>
+          <button ion-button icon-only *ngIf="contains(item.deliverOptions, '2')" class="common-tag">
+            <ion-icon name="home"></ion-icon>
+          </button>
+        </div>
+      </div> -->
+      <ion-item lines="none">
+        <ion-label>
+          <h2 class="margin-top-5px product-price">
+            R$ {{item.price.toFixed(2).toString().replace('.', ',')}}
+          </h2>
+  
+          <!-- <div class="line-break product-name"> -->
+            <p class="line-break product-name">{{item.name}}</p>
+          <!-- </div> -->
+  
+          <div class="line-break product-store">
             <p>
-              {{item.code}}
+              <ion-icon name="cart"></ion-icon>
+              <b> {{item.store.name}}</b>
             </p>
-
-            <div class="line-break">
-              <h2>{{item.name}}</h2>
-            </div>
-
-            <div class="same-line">
-              <h2>R$ {{item.price}}</h2> <!-- <p> x {{item.qty}}{{item.unity}}</p> -->
-            </div>
-          </ion-label>
-          
-        </ion-item>
-      </div>
-    </ion-list>
-
-    <ion-list *ngSwitchCase="'unavailable'">
-      <div *ngFor="let item of products; let i = index">
-        <ion-item lines="full" *ngIf="!item.available" (click)="itemTapped(item.id)">
-          <ion-thumbnail slot="start" *ngIf="item.coverImage">
-            <img [src]="item.coverImage.url" onerror="this.src='assets/imgs/no-image.png'"/>
-            <!-- <img [src]="url + item.images[0].image" onerror="this.src='assets/imgs/no-image.png'"/> -->
-            <!-- <img src="{{item.imagesList && item.imagesList[0] ? item.imagesList[0].src : 'assets/imgs/sm.jpg'}}">             -->
-          </ion-thumbnail>
-          <ion-thumbnail slot="start" *ngIf="!item.coverImage">
-            <img src="assets/imgs/no-image.png"/>
-          </ion-thumbnail>
-
-          <ion-label>
-            <p>
-              {{item.code}}
-            </p>
-
-            <div class="line-break">
-              <h2>{{item.name}}</h2>
-            </div>
-
-            <div class="same-line">
-              <h2>R$ {{item.price}}</h2> <!-- <p> x {{item.qty}}{{item.unity}}</p> -->
-            </div>
-          </ion-label>
-                   
-        </ion-item>
-      </div>
-    </ion-list>
-
-    <!-- <ion-list *ngSwitchCase="'soldOut'">
-      <div *ngFor="let item of products; let i = index">
-        <ion-item lines="full" *ngIf="item.qty <= 0" (click)="itemTapped(item.code)">
-          <ion-thumbnail slot="start">
-            <img src="{{item.imagesList[0] ? item.imagesList[0].src : 'assets/imgs/sm.jpg'}}">            
-          </ion-thumbnail>
-
-          <ion-label>
-            <p>
-            {{item.code}}
-          </p>
-
-          <div class="line-break">
-            <h2>{{item.productName}}</h2>
           </div>
-
-          <div class="same-line">
-            <h2>R$ {{item.price}}</h2> <p> x {{item.qty}}{{item.unity}}</p>
-          </div>
-          </ion-label>          
-        </ion-item>
-      </div>
-    </ion-list> -->
+        </ion-label>        
+      </ion-item>
+    </ion-card>
   </div>
+
+  <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loading-spinner="undefined">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

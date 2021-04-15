@@ -85,6 +85,12 @@
   white-space: normal;
 }
 
+.ellipsis-overflow{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .text-align-center {
   text-align: center;
 } 

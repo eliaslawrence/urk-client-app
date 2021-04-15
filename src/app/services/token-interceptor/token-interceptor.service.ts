@@ -17,16 +17,16 @@ export class TokenInterceptorService {
   constructor(private storage: Storage) {
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return from(this.storage.get(TOKEN_KEY))
-      .pipe(mergeMap((token) => {
-        request = request.clone({
-          setHeaders: {
-            Authorization: `bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        return next.handle(request);
-      }));
-  }
+  // intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   return from(this.storage.get(TOKEN_KEY))
+  //     .pipe(mergeMap((token) => {
+  //       request = request.clone({
+  //         setHeaders: {
+  //           Authorization: `bearer ${token}`,
+  //           'Content-Type': 'application/json'
+  //         }
+  //       });
+  //       return next.handle(request);
+  //     }));
+  // }
 }

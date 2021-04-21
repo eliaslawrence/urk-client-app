@@ -120,5 +120,8 @@ ion-item.selected {
 }
 
 ion-footer{
-  padding-left: 8px;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  font-size: 20px;
 }

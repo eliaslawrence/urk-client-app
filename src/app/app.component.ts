@@ -7,6 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { StoreService } from './services/store/store.service';
 import { UserService } from './services/user/user.service';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx'
 
 @Component({
   selector: 'app-root',
@@ -15,19 +16,22 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 })
 export class AppComponent {
 
+  lastIndex = 0;
+
   public appPages = [
-    { title: 'Minha Loja', url: '/store', icon: 'storefront' },
-    { title: 'Produtos', url: '/products', icon: 'grid' },
+    { url: '/products', outline: '', icon: 'bag-handle' },
+    { url: '/stores', outline: '-outline', icon: 'storefront' },    
   ];
 
-  constructor(private storage      : Storage,
-              private splashScreen : SplashScreen,
-              private authService  : AuthenticateService,
-              private userService  : UserService,
-              private storeService : StoreService,
+  constructor(private storage          : Storage,
+              private splashScreen     : SplashScreen,
+              private authService      : AuthenticateService,
+              private userService      : UserService,
+              private storeService     : StoreService,
               private screenOrientation: ScreenOrientation,
               private platform         : Platform,
-              private navCtrl      : NavController) {    
+              private statusBar        : StatusBar,
+              private navCtrl          : NavController) {    
 
     this.splashScreen.hide();
     this.navCtrl.navigateRoot('products');  
@@ -36,8 +40,10 @@ export class AppComponent {
     }
   }
 
-  logout(){    
-    this.storage.remove("userToken");
-    this.navCtrl.navigateRoot('');
+  itemTapped(index){
+    this.appPages[index].outline = '';
+    this.appPages[this.lastIndex].outline = '-outline';
+    this.lastIndex = index;
+    this.navCtrl.navigateRoot(this.appPages[index].url);
   }
 }

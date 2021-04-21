@@ -15,6 +15,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 //START: Provider
 import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx'
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 //END: Provider
 
@@ -31,6 +32,7 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
   providers: [
     ScreenOrientation,
     SplashScreen,
+    StatusBar,
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: TokenInterceptorService,

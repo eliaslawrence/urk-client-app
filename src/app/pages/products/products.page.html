@@ -8,20 +8,17 @@
   Ionic pages and navigation.
 -->
 
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start" *ngIf="!searchAble">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
+<ion-header [translucent]="true" mode="ios">
+  <ion-toolbar color="primary">
     <ion-title *ngIf="!searchAble">Urk</ion-title>
-    <ion-buttons slot="end" id="products-search" *ngIf="!searchAble">
+    <ion-buttons slot="end" id="products-search" *ngIf="!searchAble" style="margin: auto;">
       <ion-button (click)="enableSearch()">
         <ion-icon slot="icon-only" name="search-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
 
-    <ion-searchbar search-icon="undefined" mode="ios" inputmode="search" placeholder="Pesquisar" (ionInput)="search($event)" *ngIf="searchAble" class="searchbar"></ion-searchbar>
-    <ion-buttons slot="end" *ngIf="searchAble">
+    <ion-searchbar search-icon="undefined" mode="ios" inputmode="search" placeholder="Pesquisar" (ionInput)="search($event)" *ngIf="searchAble" class="searchbar" color="light"></ion-searchbar>
+    <ion-buttons slot="end" *ngIf="searchAble" style="margin: auto;">
       <ion-button (click)="cancel()">
         Cancelar
       </ion-button>

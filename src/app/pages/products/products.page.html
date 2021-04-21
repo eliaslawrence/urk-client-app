@@ -10,6 +10,9 @@
 
 <ion-header [translucent]="true" mode="ios">
   <ion-toolbar color="secondary">
+    <ion-buttons slot="start" *ngIf="!searchAble">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title *ngIf="!searchAble">Urk</ion-title>
     <ion-buttons slot="end" id="products-search" *ngIf="!searchAble" style="margin: auto;">
       <ion-button (click)="enableSearch()">

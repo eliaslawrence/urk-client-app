@@ -8,8 +8,8 @@
   Ionic pages and navigation.
 -->
 
-<ion-header>
-  <ion-toolbar>
+<ion-header mode="ios">
+  <ion-toolbar color="secondary">
     <ion-title>Produto</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -21,7 +21,7 @@
   <div style="position: relative;height: 60%;width: 100%;">
     <div style="position: absolute;width: 100%;z-index: 2;right: 10px;text-align: right;top: 10px;">
       <ion-badge>
-        {{product.images.length}} fotos
+        {{product.images.length}} foto{{product.images.length != 1 ? 's' : ''}}
       </ion-badge>
     </div>
     <div style="position: absolute;width: 100%;z-index: 2;color: #fff;left: 10px;text-align: left;bottom: 5px;">

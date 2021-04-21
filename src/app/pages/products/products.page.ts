@@ -9,7 +9,6 @@ import { ProductService } from 'src/app/services/product/product.service';
 })
 export class ProductsPage implements OnInit {
 
-  status = "available";
   products: Array<any> = []; 
 
   limit = 10;
@@ -72,6 +71,7 @@ export class ProductsPage implements OnInit {
 
   itemTapped(item) {      
     this.navCtrl.navigateForward('products/product/' + item.id);
+    this.searchAble = false;
   }
 
   loadData(event) {

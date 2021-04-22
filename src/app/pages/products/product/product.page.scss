@@ -6,9 +6,18 @@ ion-slides {
 }
 
 img { 
+    height: 100%;    
+    object-fit: cover;
+    width: 100%;
     filter: brightness(90%);
 }
 
 ion-list {
     padding-top: 0;
 }
+
+// #product-no-image {
+//     height: 100%;    
+//     object-fit: cover;
+//     width: 100%;
+// }

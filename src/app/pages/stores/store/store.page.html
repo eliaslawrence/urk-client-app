@@ -23,9 +23,9 @@
       <img [src]="store && store.coverImage ? store.coverImage.url : 'assets/imgs/no-image.png'" onerror="this.src='assets/imgs/no-image.png'"/>
       <div class="card-title">{{store ? store.name : 'Loja'}}</div>
     </ion-card>
-  </div>  
+  </div>    
 
-  <ion-segment color="light" [(ngModel)]="tab" class="hide-segment fixed-segment" id="segment-tab" mode="md">
+  <ion-segment [(ngModel)]="tab" class="hide-segment fixed-segment" id="segment-tab" mode="md" color="light">
     <ion-segment-button value="info">
       <ion-icon name="information-circle-outline"></ion-icon>
     </ion-segment-button>
@@ -34,7 +34,7 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-segment color="light" [(ngModel)]="tab" mode="md">
+  <ion-segment color="light" [(ngModel)]="tab" mode="md" id="segment-tab-2">
     <ion-segment-button value="info">
         <ion-icon name="information-circle-outline"></ion-icon>
     </ion-segment-button>
@@ -108,4 +108,4 @@
   </div>
 </ion-content>
 
-<ion-footer class="ion-no-border"></ion-footer>
+<ion-footer class="ion-no-border height-50-px"></ion-footer>

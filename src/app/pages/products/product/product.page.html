@@ -8,7 +8,7 @@
   Ionic pages and navigation.
 -->
 
-<ion-header mode="ios">
+<ion-header [translucent]="true" mode="ios">
   <ion-toolbar color="secondary">
     <ion-title>Produto</ion-title>
     <ion-buttons slot="start">
@@ -50,7 +50,7 @@
         <img [src]="image.url" onerror="this.src='assets/imgs/no-image.png'"/>
       </ion-slide>
     </ion-slides> -->
-    <img src="assets/imgs/no-image.png" *ngIf="product.images.length == 0"/>
+    <img src="assets/imgs/no-image.png" *ngIf="product.images.length == 0" id="product-no-image"/>
   </div>
 
   <ion-list>
@@ -66,12 +66,12 @@
     <ion-item lines="full" (click)="descriptionTapped()">
       <ion-label>
         <p>Descrição</p>
-        <div [ngClass]="{'line-break': !completeDescription, 'ellipsis-overflow': completeDescription}">
+        <div [ngClass]="{'line-break': completeDescription, 'ellipsis-overflow': !completeDescription}">
           <h3>{{product.description}}</h3>
         </div>
       </ion-label>      
     </ion-item>    
   </ion-list>
-  <!-- <ion-button expand="block" class="block-button" (click)="saveVariable()">Comprar</ion-button>
-  <ion-button expand="block" class="block-button" fill="outline" color="white" (click)="saveVariable()">Adicionar ao Carrinho</ion-button> -->
 </ion-content>
+
+<ion-footer class="ion-no-border height-50-px"></ion-footer>

@@ -51,10 +51,14 @@ export class StorePage implements OnInit {
     var element = document.getElementById("segment-tab");
 
     if(event.detail.scrollTop > 200){
-      element.classList.remove("hide-segment");
+      element.classList.remove("hide-segment");      
     }else{
       element.classList.add("hide-segment");
     }
+  }
+
+  itemTapped(item) {      
+    this.navCtrl.navigateForward('products/product/' + item.id);
   }
 
 }

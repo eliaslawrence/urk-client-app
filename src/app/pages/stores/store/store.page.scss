@@ -2,6 +2,10 @@ ion-toolbar:last-of-type {
     --border-width: 0;
 }
 
+ion-header {
+    z-index: 0;
+}
+
 .cover-card {
     ion-card {
         position: relative;
@@ -60,11 +64,8 @@ ion-segment {
 }
 
 .hide-segment{
+    // visibility:hidden;
     display: none;
-}
-
-ion-footer{
-    height: 50px;
 }
 
 // Products tab

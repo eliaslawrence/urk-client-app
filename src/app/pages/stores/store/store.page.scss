@@ -1,0 +1,145 @@
+ion-toolbar:last-of-type {
+    --border-width: 0;
+}
+
+ion-header {
+    z-index: 0;
+}
+
+.cover-card {
+    ion-card {
+        position: relative;
+        text-align: center;
+        margin: 0px !important;
+        height: 200px;
+        width: 100% !important;
+        border-radius: 0;
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            filter: brightness(50%);
+        }
+    }
+
+    .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 52%;
+        width: 100%;
+        color: #fff;
+    }
+}
+
+.badges-item{
+    ion-label{
+      white-space: normal;
+    }
+}
+.list-md{
+    padding-top: 0
+}
+
+ion-segment {
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px ;
+    z-index: 2;
+    color: white;
+    --background: var(--ion-color-primary);
+}
+
+.fixed-segment{
+    position: fixed;
+    top: 43px;
+    z-index: 3;
+}
+
+.hide-segment{
+    // visibility:hidden;
+    display: none;
+}
+
+// Products tab
+#products-area {
+    @media (max-width: 500px) {
+        ion-card{
+          width: calc(50% - 10px) !important;
+        }
+    }
+      
+    @media (max-width: 650px) and (min-width: 500px){
+        ion-card{
+          width: calc(33% - 10px) !important;
+        }
+    }
+      
+    @media (max-width: 900px) and (min-width: 650px){
+        ion-card{
+          width: calc(25% - 10px) !important;
+        }
+    }
+      
+    @media (max-width: 1200px) and (min-width: 900px){
+        ion-card{
+          width: calc(20% - 10px) !important;
+        }
+    }
+      
+    @media (min-width: 1200px){
+        ion-card{
+          width: calc(14% - 10px) !important;
+        }
+    }
+
+    ion-card {
+        margin: 5px !important;
+        display: inline-grid !important;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          position: absolute; /* Take your picture out of the flow */
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0; /* Make the picture taking the size of it's parent */
+          object-position: center;
+        }
+    }
+
+    .pricetag-button:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+    }
+      
+    .product-price{
+        color: var(--ion-color-primary);
+        font-weight: 300;
+        margin-bottom: 10px;
+    }
+      
+    .product-name{
+        // p{
+          font-size: 14px;
+          // font-weight: 100;
+          margin: 0;
+        // }
+    }
+      
+    .product-store{
+        p{
+          font-size: 10px;
+        }
+    }
+}

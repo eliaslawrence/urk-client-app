@@ -1,5 +1,5 @@
 {
-  "name": "urk-store",
+  "name": "urk",
   "integrations": {
     "capacitor": {},
     "cordova": {}

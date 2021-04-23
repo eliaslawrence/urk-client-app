@@ -9,3 +9,110 @@
         color: var(--ion-color-medium-shade);
     }
 }
+
+//START: Searchbar
+
+.sc-ion-searchbar-ios-h {
+  padding-bottom: 0;
+}
+
+.searchbar-search-icon {
+  display: none !important;
+}
+
+.toolbar .searchbar-md{
+  padding-left: 10px;
+}
+
+.searchbar-md .searchbar-input{
+  padding-left: 15px;
+  box-shadow: none;
+  border-radius: 22px;
+}
+
+.searchbar-md .searchbar-input::-webkit-input-placeholder {
+  font-weight: 100;
+}
+
+.searchbar-md .searchbar-search-icon{
+  background-size: 0px;
+}
+//END: Searchbar
+
+@media (max-width: 500px) {
+  ion-card{
+    width: calc(50% - 10px) !important;
+  }
+}
+
+@media (max-width: 650px) and (min-width: 500px){
+  ion-card{
+    width: calc(33% - 10px) !important;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 650px){
+  ion-card{
+    width: calc(25% - 10px) !important;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 900px){
+  ion-card{
+    width: calc(20% - 10px) !important;
+  }
+}
+
+@media (min-width: 1200px){
+  ion-card{
+    width: calc(14% - 10px) !important;
+  }
+}
+
+
+ion-card {
+  margin: 5px !important;
+  // margin: auto !important;
+  // width: calc(50% - 10px) !important;
+  // width: 175px !important;
+  // max-width: calc(50% - 10px) !important;
+  display: inline-grid !important;
+  // box-shadow: none !important;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute; /* Take your picture out of the flow */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; /* Make the picture taking the size of it's parent */
+    object-position: center;
+  }
+}
+
+.pricetag-button:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+}
+
+.product-price{
+  color: var(--ion-color-primary);
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.product-name{
+  // p{
+    font-size: 14px;
+    // font-weight: 100;
+    margin: 0;
+  // }
+}
+
+.product-store{
+  p{
+    font-size: 10px;
+  }
+}

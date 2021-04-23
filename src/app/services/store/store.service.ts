@@ -14,11 +14,15 @@ export class StoreService {
 
   constructor(private requestService: RequestService) { }
 
-  async findByUser() {    
-    let uri = BASE_URI +'findByUser/';
-    let store = await this.requestService.get(uri, {}, "Buscando...");
-    this.setObservable(store);
-    return store;
+  // FIND
+  async findById(storeId) {
+    let uri = BASE_URI +'findById/' + storeId;
+    return await this.requestService.get(uri, {}, "Buscando...");
+  }
+
+  async search(limit,skip,text=undefined) {
+    let uri = BASE_URI +'search/' + limit + '/' + skip  + '/' + (text == undefined ? '' : text);
+    return await this.requestService.get(uri, {}, null);
   }
 
   async updateAttribute(storeID, attributeJSON) : Promise<any>{

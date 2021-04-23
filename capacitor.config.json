@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "urk-store",
+  "appId": "com.urk.client",
+  "appName": "urk",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

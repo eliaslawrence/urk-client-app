@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.urk.client1" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.urk.client" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Urk</name>
     <description>As melhores lojas que cabem no seu bolso.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="urk.lojas@gmail.com" href="http://facebook.com/urkapp">Grupo Urk</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

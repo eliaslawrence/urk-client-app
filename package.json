@@ -1,8 +1,8 @@
 {
   "name": "urk",
-  "version": "0.0.0",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "0.2.0",
+  "author": "Grupo Urk",
+  "homepage": "https://facebook.com/urkapp",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

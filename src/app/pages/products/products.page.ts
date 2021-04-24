@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product/product.service';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-products',
@@ -15,8 +16,15 @@ export class ProductsPage implements OnInit {
   lastLength;
   searchAble = false;
 
-  constructor(public navCtrl         : NavController,
-              private productService : ProductService) {     
+  constructor(public navCtrl            : NavController,
+              private productService    : ProductService,
+              private platform          : Platform,
+              private screenOrientation : ScreenOrientation,
+              ) {     
+
+    if(this.platform.is('android') || this.platform.is('iphone')) {
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    }
   }
 
   ngOnInit() {

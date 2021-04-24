@@ -36,15 +36,14 @@ export class AppComponent {
     this.splashScreen.hide();
     this.navCtrl.navigateRoot('products');  
     this.statusBar.backgroundColorByHexString("#4ec77e");
-    if(this.platform.is('android') || this.platform.is('iphone')) {
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-    }
   }
 
   itemTapped(index){
-    this.appPages[index].outline = '';
-    this.appPages[this.lastIndex].outline = '-outline';
-    this.lastIndex = index;
+    if(index != this.lastIndex){
+      this.appPages[index].outline = '';
+      this.appPages[this.lastIndex].outline = '-outline';
+      this.lastIndex = index;
+    }    
     this.navCtrl.navigateRoot(this.appPages[index].url);
   }
 }

@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AlertController, NavController, PopoverController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { AddPhotoComponent } from 'src/app/components/add-photo/add-photo/add-photo.component';
 import { ProductService } from 'src/app/services/product/product.service';
 import { StoreService } from 'src/app/services/store/store.service';
 
@@ -15,8 +14,8 @@ export class StorePage implements OnInit {
   
   id:string;
   tab = "info";
-  private store:any = {};
-  private products:Array<any> = [];
+  store:any = {};
+  products:Array<any> = [];
 
   constructor(private router            : Router,
               private route             : ActivatedRoute,
@@ -36,7 +35,7 @@ export class StorePage implements OnInit {
     this.getStore(this.id);
   }
 
-  private async getStore(id) {
+  async getStore(id) {
     try {
       this.store = await this.storeService.findById(id); 
       this.products = await this.productService.findByStore(this.store.id);      
@@ -47,7 +46,7 @@ export class StorePage implements OnInit {
     }         
   }  
 
-  private onScroll(event){
+  onScroll(event){
     var element = document.getElementById("segment-tab");
 
     if(event.detail.scrollTop > 200){

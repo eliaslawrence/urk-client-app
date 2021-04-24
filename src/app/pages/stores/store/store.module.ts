@@ -8,11 +8,6 @@ import { StorePageRoutingModule } from './store-routing.module';
 
 import { StorePage } from './store.page';
 
-// Providers
-import { Camera } from '@ionic-native/camera/ngx';
-import { File } from "@ionic-native/file/ngx";
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -20,11 +15,6 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     IonicModule,
     StorePageRoutingModule
   ],
-  declarations: [StorePage],
-  providers: [
-    Camera,
-    File,
-    FileTransfer
-  ]
+  declarations: [StorePage]
 })
 export class StorePageModule {}

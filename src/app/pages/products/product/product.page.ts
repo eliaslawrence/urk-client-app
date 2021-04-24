@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController, NavController, PopoverController } from '@ionic/angular';
-import { AddPhotoComponent } from 'src/app/components/add-photo/add-photo/add-photo.component';
 import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
@@ -11,10 +10,10 @@ import { ProductService } from 'src/app/services/product/product.service';
 })
 export class ProductPage implements OnInit {
 
-  private id        : string;
-  private product   : any = {images: [], price: 0, name: '', description: '', cost: '', store: {}};
+  id        : string;
+  product   : any = {images: [], price: 0, name: '', description: '', cost: '', store: {}};
 
-  private completeDescription : Boolean = false;
+  completeDescription : Boolean = false;
 
   constructor(private route         : ActivatedRoute,
               private router        : Router,
@@ -48,11 +47,11 @@ export class ProductPage implements OnInit {
     }
   }
 
-  private openStorePage() {      
+  openStorePage() {      
     this.navCtrl.navigateForward('stores/store/' + this.product.store.id);
   }
 
-  private descriptionTapped() {
+  descriptionTapped() {
     this.completeDescription = !this.completeDescription;
   }
 

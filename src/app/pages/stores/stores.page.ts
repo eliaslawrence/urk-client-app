@@ -27,13 +27,13 @@ export class StoresPage implements OnInit {
     this.getStores();
   }
 
-  private search(ev){
+  search(ev){
     // set val to the value of the searchbar
     let searchText = ev.target.value.toLowerCase();
     this.getStores(searchText);
   }
 
-  private async getStores(searchText=undefined) {
+  async getStores(searchText=undefined) {
 
     try {      
       // console.log(searchText); 
@@ -46,11 +46,11 @@ export class StoresPage implements OnInit {
     } 
   }
 
-  private enableSearch() {      
+  enableSearch() {      
     this.searchAble = true;
   }
 
-  private cancel(){
+  cancel(){
     // Reset items back to all of the items
     this.getStores();
     this.searchAble = false;

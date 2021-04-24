@@ -147,3 +147,5 @@ lib-cov
 Dockerfile
 
 docker-compose.yml
+
+*.keystore

@@ -8,10 +8,6 @@ import { ProductPageRoutingModule } from './product-routing.module';
 
 import { ProductPage } from './product.page';
 
-import { Camera } from '@ionic-native/camera/ngx';
-import { File } from "@ionic-native/file/ngx";
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -19,11 +15,6 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     IonicModule,
     ProductPageRoutingModule
   ],
-  declarations: [ProductPage],
-  providers: [
-    Camera,
-    File,
-    FileTransfer
-  ]
+  declarations: [ProductPage]
 })
 export class ProductPageModule {}

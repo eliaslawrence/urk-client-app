@@ -17,6 +17,11 @@ export class StorePage implements OnInit {
   store:any = {};
   products:Array<any> = [];
 
+  limit = 10;
+  lastLength;
+  searchText = undefined;
+  searchAble = false;
+
   constructor(private router            : Router,
               private route             : ActivatedRoute,
               private storeService      : StoreService,
@@ -32,14 +37,23 @@ export class StorePage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.getStore(this.id);
+    this.getStore();
   }
 
-  async getStore(id) {
+  async getStore() {
     try {
-      this.store = await this.storeService.findById(id); 
-      this.products = await this.productService.findByStore(this.store.id);      
+      this.store = await this.storeService.findById(this.id); 
+      this.products = await this.productService.findByStore(this.store.id, this.limit, 0, this.searchText);      
       console.log(this.store);
+    } catch (error) {
+      console.log(error);
+      console.log("Não foi possível carregar o feed principal");
+    }         
+  }  
+
+  async getProducts() {
+    try {
+      this.products = await this.productService.findByStore(this.id, this.limit, 0, this.searchText);    
     } catch (error) {
       console.log(error);
       console.log("Não foi possível carregar o feed principal");
@@ -58,6 +72,49 @@ export class StorePage implements OnInit {
 
   itemTapped(item) {      
     this.navCtrl.navigateForward('products/product/' + item.id);
+  }
+
+  loadData(event) {
+    setTimeout(() => {
+      console.log('Done');
+      event.target.complete();
+
+      this.appendItems(this.limit);
+
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+      if (this.products.length == this.lastLength) {
+        console.log('No More Data');
+        // event.target.disabled = true;
+      }
+    }, 500);
+  }
+
+  async appendItems(number) {
+    try {
+      let newProducts = await this.productService.findByStore(this.store.id, number, this.products.length, this.searchText);
+      this.products = this.products.concat(newProducts);          
+    } catch (error) {
+      console.error(error);
+      console.log("Não foi possível carregar o feed principal");
+    } 
+  }
+
+  enableSearch() {      
+    this.searchAble = true;
+  }
+
+  cancel(){
+    // Reset items back to all of the items
+    this.searchText = undefined;
+    this.getProducts();
+    this.searchAble = false;
+  }
+
+  search(ev){
+    // set val to the value of the searchbar
+    this.searchText = ev.target.value.toLowerCase();
+    this.getProducts();
   }
 
 }

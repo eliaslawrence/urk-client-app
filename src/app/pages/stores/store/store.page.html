@@ -10,10 +10,22 @@
 
 <ion-header [translucent]="true" mode="ios">
   <ion-toolbar color="secondary">
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" *ngIf="tab=='info' || !searchAble">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Loja</ion-title>
+    <ion-title *ngIf="tab=='info' || !searchAble">Loja</ion-title>
+    <ion-buttons slot="end" id="products-search" *ngIf="tab!='info' && !searchAble" style="margin: auto;">
+      <ion-button (click)="enableSearch()">
+        <ion-icon slot="icon-only" name="search-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-searchbar search-icon="undefined" mode="ios" inputmode="search" placeholder="Pesquisar" (ionInput)="search($event)" *ngIf="tab!='info' && searchAble" class="searchbar" color="light"></ion-searchbar>
+    <ion-buttons slot="end" *ngIf="searchAble" style="margin: auto;">
+      <ion-button (click)="cancel()">
+        Cancelar
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -25,8 +37,8 @@
     </ion-card>
   </div>    
 
-  <ion-segment [(ngModel)]="tab" class="hide-segment fixed-segment" id="segment-tab" mode="md" color="light">
-    <ion-segment-button value="info">
+  <ion-segment [(ngModel)]="tab" class="hide-segment fixed-segment" id="segment-tab" mode="md" color="light" [ngStyle]="{'top': searchAble ? '52px' : '43px'}">
+    <ion-segment-button value="info" (click)="searchAble = false">
       <ion-icon name="information-circle-outline"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="products">
@@ -35,7 +47,7 @@
   </ion-segment>
 
   <ion-segment color="light" [(ngModel)]="tab" mode="md" id="segment-tab-2">
-    <ion-segment-button value="info">
+    <ion-segment-button value="info" (click)="searchAble = false">
         <ion-icon name="information-circle-outline"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="products">
@@ -104,6 +116,10 @@
           </ion-label>        
         </ion-item>
       </ion-card>
+      <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loading-spinner="undefined">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     </div>
   </div>
 </ion-content>

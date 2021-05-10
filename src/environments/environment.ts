@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlServer: 'http://192.168.15.6:1337/'//'https://urk.herokuapp.com/'//'http://192.168.15.6:1337/'
+  // urlServer: 'http://192.168.15.6:1337/'
+  urlServer: 'https://urk.herokuapp.com/'
 };
 
 /*

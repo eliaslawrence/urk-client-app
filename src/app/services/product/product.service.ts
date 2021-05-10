@@ -16,10 +16,11 @@ export class ProductService {
     return await this.requestService.get(uri, {}, "Buscando...");
   }
 
-  async findByStore(storeId) {
-    let uri = BASE_URI +'findByStore/' + storeId;
-    return await this.requestService.get(uri, {}, "Buscando...");
+  async findByStore(storeId,limit,skip,text=undefined) {
+    let uri = BASE_URI +'findByStore/' + storeId + '/' + limit + '/' + skip  + '/' + (text == undefined ? '' : text);
+    return await this.requestService.get(uri, {}, null);
   }
+  
   async search(limit,skip,text=undefined) {
     let uri = BASE_URI +'search/' + limit + '/' + skip  + '/' + (text == undefined ? '' : text);
     return await this.requestService.get(uri, {}, null);

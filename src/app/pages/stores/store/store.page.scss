@@ -58,8 +58,7 @@ ion-segment {
 }
 
 .fixed-segment{
-    position: fixed;
-    top: 43px;
+    position: fixed;   
     z-index: 3;
 }
 
@@ -143,3 +142,11 @@ ion-segment {
         }
     }
 }
+
+//START: Searchbar
+
+.sc-ion-searchbar-ios-h {
+    padding-bottom: 0 !important;
+}
+
+//END: Searchbar

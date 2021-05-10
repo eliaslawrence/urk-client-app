@@ -55,7 +55,7 @@ export class RequestService {
   }
 
   private async getRequest(url, params, loadingMessage = null): Promise<any>{    
-    try{      
+    try{
       await this.showLoading(loadingMessage);
       var result = await this.getHttp(url, params);
     } catch (err) {

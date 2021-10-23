@@ -21,6 +21,7 @@ export class StorePage implements OnInit {
   lastLength;
   searchText = undefined;
   searchAble = false;
+  completeDescription : Boolean = false;
 
   constructor(private router            : Router,
               private route             : ActivatedRoute,
@@ -115,6 +116,10 @@ export class StorePage implements OnInit {
     // set val to the value of the searchbar
     this.searchText = ev.target.value.toLowerCase();
     this.getProducts();
+  }
+
+  descriptionTapped() {
+    this.completeDescription = !this.completeDescription;
   }
 
 }

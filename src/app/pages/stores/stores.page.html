@@ -39,9 +39,10 @@
             {{store.name}}
           </h2>
   
-          <p class="line-break" *ngIf="store.address">
-            {{store.address.address}} {{store.address.number}}{{store.address.complement ? ' (' + store.address.complement + ')' : ''}}, {{store.address.city}} - {{store.address.state }}
-          </p>
+          <span *ngIf="store.address">
+            <p>{{store.address.address}}, {{store.address.number}}{{store.address.complement ? ' (' + store.address.complement + ')' : ''}} - {{store.address.neighborhood}}</p>
+            <p>{{store.address.city}} - {{store.address.state}}</p>
+          </span>        
   
         </ion-label>        
       </ion-item>

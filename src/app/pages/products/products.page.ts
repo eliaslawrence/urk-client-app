@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
+import { LoadingController, NavController, Platform } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { SystemService } from 'src/app/services/system/system.service';
 
 @Component({
   selector: 'app-products',
@@ -21,6 +22,7 @@ export class ProductsPage implements OnInit {
               private productService    : ProductService,
               private platform          : Platform,
               private screenOrientation : ScreenOrientation,
+              private systemService     : SystemService
               ) {     
 
     if(this.platform.is('android') || this.platform.is('iphone')) {
@@ -32,7 +34,8 @@ export class ProductsPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.getProducts();
+    // this.systemService.showLoading('Buscando');
+    this.getProducts();    
   }
 
   private search(ev){
@@ -44,12 +47,14 @@ export class ProductsPage implements OnInit {
   private async getProducts() {
 
     try {      
-      // console.log(searchText); 
+      // console.log(searchText);       
       this.products = await this.productService.search(this.limit,0,this.searchText);
+      // this.systemService.dismissLoading();
       console.log(this.products); 
       this.lastLength = this.products.length;
       // console.log(this.products);            
     } catch (error) {
+      // this.systemService.dismissLoading();
       console.error(error);
       console.log("Não foi possível carregar o feed principal");
     } 
@@ -82,7 +87,6 @@ export class ProductsPage implements OnInit {
 
   itemTapped(item) {      
     this.navCtrl.navigateForward('products/product/' + item.id);
-    this.searchAble = false;
   }
 
   loadData(event) {

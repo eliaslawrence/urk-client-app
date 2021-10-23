@@ -149,3 +149,5 @@ Dockerfile
 docker-compose.yml
 
 *.keystore
+
+deploy/

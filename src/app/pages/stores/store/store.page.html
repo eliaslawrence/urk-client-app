@@ -21,7 +21,7 @@
     </ion-buttons>
 
     <ion-searchbar search-icon="undefined" mode="ios" inputmode="search" placeholder="Pesquisar" (ionInput)="search($event)" *ngIf="tab!='info' && searchAble" class="searchbar" color="light"></ion-searchbar>
-    <ion-buttons slot="end" *ngIf="searchAble" style="margin: auto;">
+    <ion-buttons slot="end" *ngIf="tab!='info' && searchAble" style="margin: auto;">
       <ion-button (click)="cancel()">
         Cancelar
       </ion-button>
@@ -38,7 +38,7 @@
   </div>    
 
   <ion-segment [(ngModel)]="tab" class="hide-segment fixed-segment" id="segment-tab" mode="md" color="light" [ngStyle]="{'top': searchAble ? '52px' : '43px'}">
-    <ion-segment-button value="info" (click)="searchAble = false">
+    <ion-segment-button value="info" (click)="cancel()"> 
       <ion-icon name="information-circle-outline"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="products">
@@ -47,7 +47,7 @@
   </ion-segment>
 
   <ion-segment color="light" [(ngModel)]="tab" mode="md" id="segment-tab-2">
-    <ion-segment-button value="info" (click)="searchAble = false">
+    <ion-segment-button value="info" (click)="cancel()"> 
         <ion-icon name="information-circle-outline"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="products">
@@ -63,12 +63,18 @@
           <p>{{store ? store.name : ''}}</p>
         </ion-label>       
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="full">
         <ion-label>
           <h2>Nome da conta</h2>
           <p>@{{store ? store.accountName : ''}}</p>
         </ion-label>      
-      </ion-item>    
+      </ion-item> 
+      <ion-item lines="none" (click)="descriptionTapped()">
+        <ion-label>
+          <h2>Descrição</h2>
+          <p [ngClass]="{'line-break': completeDescription, 'ellipsis-overflow': !completeDescription}">{{store.description}}</p>
+        </ion-label>      
+      </ion-item>  
       <ion-item-divider color="light" class="border-none">
         <ion-label>
           Telefones
@@ -88,8 +94,9 @@
       </ion-item-divider>
       <ion-item *ngIf="store.address" lines="none">
         <ion-label>
-          <h2>{{store.address.address}} {{store.address.number}}{{store.address.complement ? ', ' + store.address.complement : ''}}</h2>
-          <p>{{store.address.cep}} - {{store.address.city}} - {{store.address.state }}</p>
+          <h2>{{store.address.address}} {{store.address.number}}{{store.address.complement ? ', ' + store.address.complement : ''}} - {{store.address.neighborhood}}</h2>
+          <h3>{{store.address.city}}, {{store.address.state }}</h3>
+          <p>{{store.address.cep}}</p>
         </ion-label>      
       </ion-item>    
     </ion-list>

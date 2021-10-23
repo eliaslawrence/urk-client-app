@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
+import { SystemService } from '../system/system.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
 
-  private loading;
-  isLoading = false;
-
-  constructor(public http: HttpClient, 
-              private loadingCtrl: LoadingController) {
+  constructor(public http         : HttpClient, 
+              public systemService: SystemService,
+              private loadingCtrl : LoadingController) {
   }
 
   //POST
@@ -26,13 +25,13 @@ export class RequestService {
 
   private async postRequest(url, body, loadingMessage = null, contentType = 'application/json'): Promise<any>{
     try{
-      await this.showLoading(loadingMessage);
+      await this.systemService.showLoading(loadingMessage);
       var result = await this.postHttp(url, body, contentType);
     } catch (err) {
-      await this.dismissLoading();
+      await this.systemService.dismissLoading();
       throw err;
     }
-    await this.dismissLoading();
+    await this.systemService.dismissLoading();
     return result;      
   }
  
@@ -56,13 +55,13 @@ export class RequestService {
 
   private async getRequest(url, params, loadingMessage = null): Promise<any>{    
     try{
-      await this.showLoading(loadingMessage);
+      await this.systemService.showLoading(loadingMessage);
       var result = await this.getHttp(url, params);
     } catch (err) {
-      await this.dismissLoading();
+      await this.systemService.dismissLoading();
       throw err;
     }
-    await this.dismissLoading();
+    await this.systemService.dismissLoading();
     return result;  
   }
 
@@ -84,13 +83,13 @@ export class RequestService {
 
   private async putRequest(url, body, loadingMessage = null): Promise<any>{
     try{
-      await this.showLoading(loadingMessage);
+      await this.systemService.showLoading(loadingMessage);
       var result = await this.putHttp(url, body);
     } catch (err) {
-      await this.dismissLoading();
+      await this.systemService.dismissLoading();
       throw err;
     }
-    await this.dismissLoading();
+    await this.systemService.dismissLoading();
     return result;  
   }
  
@@ -99,16 +98,4 @@ export class RequestService {
     return this.http.put(URL, body).toPromise();
   }
 
-  private async showLoading(message){
-    if(message){
-      this.loading = await this.loadingCtrl.create({message: message});
-      await this.loading.present();
-    }    
-  }
-
-  private async dismissLoading(){
-    if(this.loading){
-      await this.loading.dismiss();
-    }    
-  }
 }

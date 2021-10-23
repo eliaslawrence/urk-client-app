@@ -32,10 +32,23 @@ export class AppComponent {
               private platform         : Platform,
               private statusBar        : StatusBar,
               private navCtrl          : NavController) {    
+     
+    this.initializeApp();
 
-    this.splashScreen.hide();
-    this.navCtrl.navigateRoot('products');  
-    this.statusBar.backgroundColorByHexString("#4ec77e");
+    if(this.platform.is('android') || this.platform.is('iphone')) {
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    }
+
+    this.navCtrl.navigateRoot('products'); 
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.statusBar.backgroundColorByHexString("#4ec77e");
+      this.splashScreen.hide();
+    });
   }
 
   itemTapped(index){

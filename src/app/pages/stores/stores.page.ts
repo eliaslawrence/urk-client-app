@@ -15,6 +15,7 @@ export class StoresPage implements OnInit {
   limit = 10;
   lastLength;
   searchAble = false;
+  searchText = undefined;
 
   constructor(public navCtrl         : NavController,
               private storeService   : StoreService) {     
@@ -29,15 +30,15 @@ export class StoresPage implements OnInit {
 
   search(ev){
     // set val to the value of the searchbar
-    let searchText = ev.target.value.toLowerCase();
-    this.getStores(searchText);
+    this.searchText = ev.target.value.toLowerCase();
+    this.getStores();
   }
 
-  async getStores(searchText=undefined) {
+  async getStores() {
 
     try {      
       // console.log(searchText); 
-      this.stores = await this.storeService.search(this.limit,0,searchText);
+      this.stores = await this.storeService.search(this.limit,0,this.searchText);
       this.lastLength = this.stores.length;
       // console.log(this.products);            
     } catch (error) {
@@ -52,13 +53,13 @@ export class StoresPage implements OnInit {
 
   cancel(){
     // Reset items back to all of the items
+    this.searchText = undefined;
     this.getStores();
     this.searchAble = false;
   }
 
   itemTapped(item) {      
     this.navCtrl.navigateForward('stores/store/' + item.id);
-    this.searchAble = false;
   }
 
   loadData(event) {
@@ -79,7 +80,7 @@ export class StoresPage implements OnInit {
 
   async appendItems(number) {
     try {
-      let newStores = await this.storeService.search(number,this.stores.length,undefined);
+      let newStores = await this.storeService.search(number,this.stores.length,this.searchText);
       this.stores = this.stores.concat(newStores);          
     } catch (error) {
       console.error(error);

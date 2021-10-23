@@ -54,6 +54,14 @@
   }
 
 /*
+  --------------------- Height ---------------------
+*/
+
+  .height-50-px {
+    height: 50px;
+  }
+
+/*
   --------------------- Segment TAB ---------------------
 */
     
@@ -82,7 +90,13 @@
 */
 
 .line-break{
-  white-space: normal;
+  white-space: break-spaces;
+}
+
+.ellipsis-overflow{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .text-align-center {

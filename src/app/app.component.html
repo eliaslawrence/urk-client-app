@@ -1,29 +1,17 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>{{store ? store.name : 'Loja'}}</ion-list-header>
-          <ion-note>{{user ? user.email : ''}}</ion-note>
-
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-      </ion-content>
-
-      <ion-footer>
-        <ion-toolbar>
-          <ion-item lines="none" detail="false" (click)="logout()">
-            <ion-icon slot="start" name="log-out"></ion-icon>
-            <ion-label>Sair</ion-label>
-          </ion-item>    
-        </ion-toolbar>
-      </ion-footer>
-    </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
+  
+  <ion-footer>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let page of appPages; let i = index" style="text-align: center;" (click)="itemTapped(i)">
+            <div>
+              <ion-icon [name]="page.icon + page.outline"></ion-icon>
+            </div>            
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+  </ion-footer>
 </ion-app>
